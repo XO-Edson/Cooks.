@@ -3,8 +3,9 @@ import User from "../Models/user.js";
 /* READ */
 const getUser = async (req, res) => {
   try {
-    const { id } = req.body;
-    const foundUser = await User.findById({ id }).exec();
+    const { id } = req.params;
+    const foundUser = await User.findById(id);
+    console.log(foundUser);
 
     if (!foundUser) return res.status(400).json({ message: "user not found" });
 
@@ -16,8 +17,8 @@ const getUser = async (req, res) => {
 
 const getUserFriends = async (req, res) => {
   try {
-    const { id } = req.body;
-    const foundUser = await User.findById({ id }).exec();
+    const { id } = req.params;
+    const foundUser = await User.findById(id).exec();
     if (!foundUser) return res.status(400).json({ message: "user not found" });
 
     const friends = await Promise.all(
