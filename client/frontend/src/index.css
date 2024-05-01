@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: black;
+  color: aliceblue;
+  min-height: 100vh;
+  padding: 1rem;
+}
