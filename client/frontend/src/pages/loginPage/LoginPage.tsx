@@ -1,5 +1,7 @@
+import Form from "./Form";
+
 function LoginPage() {
-  return <div>Login Page</div>;
+  return <Form />;
 }
 
 export default LoginPage;

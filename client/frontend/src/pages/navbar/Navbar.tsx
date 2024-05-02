@@ -77,7 +77,7 @@ function Navbar() {
 
       {/* Mobile Nav */}
       {toggleMenu ? (
-        <div className="absolute top-20 right-2 bg-blue-600 p-4 md:hidden w-[50%]">
+        <div className="absolute top-20 right-2 bg-gray-600 p-4 md:hidden w-[50%]">
           <ul className=" flex flex-col gap-x-3 ">
             <li>
               <FontAwesomeIcon icon={faMessage} className=" cursor-pointer" />

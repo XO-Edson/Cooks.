@@ -8,3 +8,17 @@ body {
   min-height: 100vh;
   padding: 1rem;
 }
+
+/* FORM INPUT */
+.input {
+  border-radius: 6px;
+  border: 1px solid hsla(0, 0%, 50%, 0.5);
+  background: rgb(75 85 99);
+  color: aliceblue;
+  padding: 0.5rem;
+  outline: none;
+}
+
+.input:hover {
+  border: 1px solid rgb(229 231 235);
+}

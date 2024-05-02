@@ -20,6 +20,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<LoginPage />} />
+
         <Route path="/home" element={<HomePage />} />
         <Route path="/profile/:userId" element={<Profilepage />} />
       </Routes>

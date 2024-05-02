@@ -8,8 +8,8 @@ const register = async (req, res) => {
   console.log(req.body);
   try {
     const {
-      firstname,
-      lastname,
+      firstName,
+      lastName,
       email,
       password,
       picturePath,
@@ -22,8 +22,8 @@ const register = async (req, res) => {
     const passwordHash = await bcrypt.hash(password, salt);
 
     const newUser = new User({
-      firstname,
-      lastname,
+      firstName,
+      lastName,
       email,
       password: passwordHash,
       picturePath,
