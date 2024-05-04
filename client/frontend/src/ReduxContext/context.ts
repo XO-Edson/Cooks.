@@ -1,12 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type User = {
-  username: string;
+export type UserType = {
+  _id: any;
+  firstName: string;
+  lastName: string;
   email: string;
   friends: string[];
+  password: string;
+  location: string;
+  occupation: string;
+  picturePath: string;
+  viewedProfile: number;
+  impressions: number;
 };
 
-type Post = {
+type PostType = {
   _id: string;
   title: string;
   content: string;
@@ -14,15 +22,15 @@ type Post = {
 
 export type InitialState = {
   mode: string;
-  user: User | null;
+  user: UserType | null;
   token: string | null;
-  posts: Post[];
+  posts: PostType[];
 };
 
 const initialState: InitialState = {
   mode: "dark",
   user: null,
-  token: null,
+  token: "",
   posts: [],
 };
 
@@ -37,11 +45,18 @@ export const authSlice = createSlice({
     setLogin: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
+      console.log(state.user, state.token);
     },
+
     setLogout: (state) => {
+      console.log("clk");
+
+      console.log(state.token);
+
       state.user = null;
       state.token = null;
     },
+
     setFriend: (state, action) => {
       if (state.user) {
         state.user.friends = action.payload.friends as string[];
@@ -49,9 +64,11 @@ export const authSlice = createSlice({
         console.error("user friends non existent ");
       }
     },
+
     setPosts: (state, action) => {
       state.posts = action.payload.posts;
     },
+
     setPost: (state, action) => {
       const updatedPosts = state.posts.map((post) => {
         if (post._id === action.payload.post._id) return action.payload.post;

@@ -9,14 +9,20 @@ import {
   faMagnifyingGlass,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
+import { setLogout } from "../../ReduxContext/context";
 
 function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state: InitialState) => state);
+  //const { user } = useSelector((state: InitialState) => state);
 
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleDropdown, setToggleDropdown] = useState(false);
+
+  const LogOut = () => {
+    dispatch(setLogout());
+    //navigate("/");
+  };
 
   return (
     <nav className=" flex justify-between items-center bg-gray-900 p-4 absolute top-0 left-0 w-full shadow-md">
@@ -63,7 +69,9 @@ function Navbar() {
           {toggleDropdown ? (
             <div className=" bg-slate-400 p-2 text-right absolute w-full mt-2">
               <p>Settings</p>
-              <p>LogOut</p>
+              <p onClick={LogOut} className=" cursor-pointer">
+                LogOut
+              </p>
             </div>
           ) : (
             ""
@@ -87,7 +95,9 @@ function Navbar() {
             </li>
           </ul>
           <p>Settings</p>
-          <p>LogOut</p>
+          <p onClick={LogOut} className=" cursor-pointer">
+            LogOut
+          </p>
         </div>
       ) : (
         ""

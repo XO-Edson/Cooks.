@@ -8,21 +8,29 @@ import { useSelector } from "react-redux";
 import { InitialState } from "./ReduxContext/context";
 import Navbar from "./pages/navbar/Navbar";
 
-function App() {
-  const { user, posts, token, mode } = useSelector(
-    (state: InitialState) => state
-  );
+type stateType = {
+  auth: InitialState;
+};
 
-  console.log(user, posts, token, mode);
+function App() {
+  const { token } = useSelector((state: stateType) => state.auth);
+
+  const isAuth = token;
 
   return (
-    <div className="mt-[8%]">
+    <div className="mt-[58px]">
       <Navbar />
       <Routes>
         <Route path="/" element={<LoginPage />} />
 
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/profile/:userId" element={<Profilepage />} />
+        <Route
+          path="/home"
+          element={isAuth ? <HomePage /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/profile/:userId"
+          element={isAuth ? <Profilepage /> : <Navigate to="/" />}
+        />
       </Routes>
     </div>
   );
