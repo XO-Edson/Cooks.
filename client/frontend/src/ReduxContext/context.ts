@@ -14,10 +14,19 @@ export type UserType = {
   impressions: number;
 };
 
-type PostType = {
+export type PostType = {
   _id: string;
+  userId: string;
+  firstName: string;
+  lastName: string;
+  location: string;
   title: string;
   content: string;
+  description: string;
+  likes: boolean;
+  comments: string[];
+  userPicturePath: string;
+  picturePath: string;
 };
 
 export type InitialState = {
@@ -49,10 +58,6 @@ export const authSlice = createSlice({
     },
 
     setLogout: (state) => {
-      console.log("clk");
-
-      console.log(state.token);
-
       state.user = null;
       state.token = null;
     },
@@ -70,8 +75,10 @@ export const authSlice = createSlice({
     },
 
     setPost: (state, action) => {
+      console.log(state);
+
       const updatedPosts = state.posts.map((post) => {
-        if (post._id === action.payload.post._id) return action.payload.post;
+        if (post._id === action.payload._id) return action.payload;
         return post;
       });
       state.posts = updatedPosts;

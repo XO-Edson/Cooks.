@@ -6,11 +6,21 @@ const createPost = async (req, res) => {
   try {
     const { userId, description, picturePath } = req.body;
     const user = await User.findById(userId);
+    if (!userId || !description) {
+      return res
+        .status(400)
+        .json({ message: "Missing required fields: userId and description." });
+    }
+    if (!user) {
+      return res.json({ message: "User missing" });
+    } else {
+      console.log(user);
+    }
 
     const newPost = new Post({
       userId,
-      firstname: user.firstname,
-      lastname: user.lastname,
+      firstName: user.firstName,
+      lastName: user.lastName,
       location: user.location,
       description,
       userPicturePath: user.picturePath,
@@ -24,7 +34,7 @@ const createPost = async (req, res) => {
     const post = await Post.find();
     res.status(201).json(post);
   } catch (error) {
-    res.status(409).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -55,7 +65,8 @@ const likePosts = async (req, res) => {
     const { userId } = req.body;
 
     const post = await Post.findById(id);
-    const isLiked = post.findById(userId);
+
+    const isLiked = post.likes.has(userId);
 
     if (isLiked) {
       post.likes.delete(userId);
@@ -63,7 +74,7 @@ const likePosts = async (req, res) => {
       post.likes.set(userId, true);
     }
 
-    const updatedPost = await post.findByIdAndUpdate(
+    const updatedPost = await Post.findByIdAndUpdate(
       id,
       { likes: post.likes },
       { new: true }

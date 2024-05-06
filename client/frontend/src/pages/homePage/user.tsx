@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { InitialState, UserType } from "../../ReduxContext/context";
-import twitterImg from "../../../public/assets/twitter.png";
-import linkedInImg from "../../../public/assets/linkedin.png";
+import twitterImg from "../../assets/twitter.png";
+import linkedInImg from "../../assets/linkedin.png";
 import userImg from "../../assets/p3.jpeg";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -20,7 +20,6 @@ type stateType = {
 function User() {
   const navigate = useNavigate();
   const { user, token } = useSelector((state: stateType) => state.auth);
-  console.log(user);
 
   const [userProfile, setUserProfile] = useState<UserType>();
 
@@ -43,10 +42,8 @@ function User() {
     getUser();
   }, []);
 
-  console.log(userProfile);
-
   return (
-    <section className="bg-slate-800 p-2 rounded-md">
+    <section className="bg-slate-900 p-2 rounded-md h-fit">
       {/* First-Row */}
       <div className="flex justify-between mb-2 items-center">
         <div

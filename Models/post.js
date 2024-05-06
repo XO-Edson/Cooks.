@@ -22,6 +22,7 @@ const postSchema = new Schema(
     likes: {
       type: Map,
       of: Boolean,
+      default: new Map(),
     },
     comment: {
       type: Array,

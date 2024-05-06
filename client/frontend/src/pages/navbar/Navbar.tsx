@@ -21,7 +21,8 @@ function Navbar() {
 
   const LogOut = () => {
     dispatch(setLogout());
-    //navigate("/");
+    setToggleDropdown(false);
+    navigate("/");
   };
 
   return (
@@ -58,7 +59,7 @@ function Navbar() {
 
         <div className=" relative">
           <h2
-            className=" bg-gray-500 rounded-md px-4 py-1 select-none cursor-pointer"
+            className=" bg-slate-700 rounded-md px-4 py-1 select-none cursor-pointer"
             onClick={() => setToggleDropdown((menu) => !menu)}
           >
             DropDown
@@ -67,7 +68,7 @@ function Navbar() {
 
           {/* Dropdown Menu */}
           {toggleDropdown ? (
-            <div className=" bg-slate-400 p-2 text-right absolute w-full mt-2">
+            <div className=" bg-slate-700 p-2 text-right absolute w-full mt-2">
               <p>Settings</p>
               <p onClick={LogOut} className=" cursor-pointer">
                 LogOut
@@ -85,7 +86,7 @@ function Navbar() {
 
       {/* Mobile Nav */}
       {toggleMenu ? (
-        <div className="absolute top-20 right-2 bg-gray-600 p-4 md:hidden w-[50%]">
+        <div className="absolute top-20 right-2 bg-slate-700 p-4 md:hidden w-[50%]">
           <ul className=" flex flex-col gap-x-3 ">
             <li>
               <FontAwesomeIcon icon={faMessage} className=" cursor-pointer" />

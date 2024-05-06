@@ -5,7 +5,6 @@ const getUser = async (req, res) => {
   try {
     const { id } = req.params;
     const foundUser = await User.findById(id);
-    console.log(foundUser);
 
     if (!foundUser) return res.status(400).json({ message: "user not found" });
 
@@ -57,7 +56,7 @@ const addRemoveFriend = async (req, res) => {
     await friend.save();
 
     const friends = await Promise.all(
-      foundUser.friends.map((id) => foundUser.findById(id))
+      user.friends.map((id) => User.findById(id))
     );
 
     const formattedFriends = friends.map(
