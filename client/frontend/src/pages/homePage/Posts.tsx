@@ -28,6 +28,7 @@ function Posts({ userId, isProfile }: Props) {
     }
 
     const data = await response.json();
+    console.log(data);
 
     dispatch(setPosts({ posts: data }));
   };
@@ -68,7 +69,7 @@ function Posts({ userId, isProfile }: Props) {
             picturePath,
             userPicturePath,
             likes,
-            comments,
+            comment,
           }) => (
             <Post
               key={_id}
@@ -80,7 +81,7 @@ function Posts({ userId, isProfile }: Props) {
               picturePath={picturePath}
               userPicturePath={userPicturePath}
               likes={likes}
-              comments={comments}
+              comment={comment}
               userId={userId}
             />
           )

@@ -4,6 +4,7 @@ import { InitialState, PostType, setPost } from "../../ReduxContext/context";
 import Friend from "../../components/Friend";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faMessage } from "@fortawesome/free-regular-svg-icons";
 
 type stateType = {
   auth: InitialState;
@@ -19,7 +20,7 @@ type PropType = {
   picturePath: string;
   userPicturePath: string;
   likes: any;
-  comments: string[];
+  comment: string[];
 };
 
 function Post({
@@ -32,7 +33,7 @@ function Post({
   picturePath,
   userPicturePath,
   likes,
-  comments,
+  comment,
 }: PropType) {
   const dispatch = useDispatch();
   const [isComment, setIsComment] = useState(false);
@@ -63,7 +64,7 @@ function Post({
         subTitle={location}
         userPicturePath={userPicturePath}
       />
-      <hr className=" border-slate-700 my-2" />
+
       <div>
         <p className=" pb-2"> {description}</p>
         {picturePath && (
@@ -74,14 +75,42 @@ function Post({
         )}
       </div>
 
-      <div className="flex">
-        <p onClick={patchLike} className=" mr-1">
-          <FontAwesomeIcon
-            icon={faHeart}
-            className={isliked ? "text-orange-600" : ""}
-          />
-        </p>
-        <p>{likeCount}</p>
+      <hr className=" border-slate-700 my-2" />
+
+      {/* ICONS */}
+      <div className="flex gap-x-4">
+        <div className="flex">
+          <p onClick={patchLike} className=" mr-1">
+            <FontAwesomeIcon
+              icon={faHeart}
+              className={isliked ? "text-orange-600" : ""}
+            />
+          </p>
+          <p>{likeCount}</p>
+        </div>
+
+        <div className="flex">
+          <p onClick={() => setIsComment(!isComment)} className=" mr-1">
+            <FontAwesomeIcon
+              icon={faMessage}
+              className={isliked ? "text-orange-600" : ""}
+            />
+          </p>
+          <p>{comment.length}</p>
+        </div>
+      </div>
+
+      {/* COMMENT BOX */}
+      <div>
+        {isComment && (
+          <>
+            {comment.map((comm, i) => (
+              <div key={`${name}-${i}`} className=" w-20 h-20 bg-blue-500">
+                {comm}
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

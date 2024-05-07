@@ -10,8 +10,8 @@ import {
   faLocationDot,
   faBriefcase,
   faPen,
-  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
 
 type stateType = {
   auth: InitialState;
@@ -63,7 +63,7 @@ function User() {
           </div>
         </div>
         <div className=" cursor-pointer">
-          <FontAwesomeIcon icon={faUserPlus} />
+          <FontAwesomeIcon icon={faUser} />
         </div>
       </div>
 

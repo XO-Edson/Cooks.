@@ -18,15 +18,16 @@ const getUserFriends = async (req, res) => {
   try {
     const { id } = req.params;
     const foundUser = await User.findById(id).exec();
+
     if (!foundUser) return res.status(400).json({ message: "user not found" });
 
     const friends = await Promise.all(
-      foundUser.friends.map((id) => foundUser.findById(id))
+      foundUser.friends.map((id) => User.findById(id))
     );
 
     const formattedFriends = friends.map(
-      ({ _id, firstname, lastname, occupation, location, picturePath }) => {
-        return { _id, firstname, lastname, occupation, location, picturePath };
+      ({ _id, firstName, lastName, occupation, location, picturePath }) => {
+        return { _id, firstName, lastName, occupation, location, picturePath };
       }
     );
 
@@ -60,8 +61,8 @@ const addRemoveFriend = async (req, res) => {
     );
 
     const formattedFriends = friends.map(
-      ({ _id, firstname, lastname, occupation, location, picturePath }) => {
-        return { _id, firstname, lastname, occupation, location, picturePath };
+      ({ _id, firstName, lastName, occupation, location, picturePath }) => {
+        return { _id, firstName, lastName, occupation, location, picturePath };
       }
     );
     res.status(200).json(formattedFriends);

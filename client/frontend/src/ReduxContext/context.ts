@@ -5,7 +5,7 @@ export type UserType = {
   firstName: string;
   lastName: string;
   email: string;
-  friends: string[];
+  friends: UserType[];
   password: string;
   location: string;
   occupation: string;
@@ -24,7 +24,7 @@ export type PostType = {
   content: string;
   description: string;
   likes: boolean;
-  comments: string[];
+  comment: string[];
   userPicturePath: string;
   picturePath: string;
 };
@@ -63,8 +63,10 @@ export const authSlice = createSlice({
     },
 
     setFriend: (state, action) => {
+      console.log(action.payload);
+
       if (state.user) {
-        state.user.friends = action.payload.friends as string[];
+        state.user.friends = action.payload;
       } else {
         console.error("user friends non existent ");
       }
