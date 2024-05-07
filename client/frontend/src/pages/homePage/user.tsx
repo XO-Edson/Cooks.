@@ -40,7 +40,7 @@ function User() {
 
   useEffect(() => {
     getUser();
-  }, []);
+  }, [user?.friends]);
 
   return (
     <section className="bg-slate-900 p-2 rounded-md h-fit">

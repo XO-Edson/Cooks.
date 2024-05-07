@@ -63,8 +63,6 @@ export const authSlice = createSlice({
     },
 
     setFriend: (state, action) => {
-      console.log(action.payload);
-
       if (state.user) {
         state.user.friends = action.payload;
       } else {

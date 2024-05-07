@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { InitialState } from "../../ReduxContext/context";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMessage, faBell } from "@fortawesome/free-regular-svg-icons";
@@ -62,7 +61,7 @@ function Navbar() {
             className=" bg-slate-700 rounded-md px-4 py-1 select-none cursor-pointer"
             onClick={() => setToggleDropdown((menu) => !menu)}
           >
-            DropDown
+            Menu
             <FontAwesomeIcon icon={faChevronDown} className=" ml-2" />
           </h2>
 

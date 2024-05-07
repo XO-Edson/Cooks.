@@ -13,7 +13,7 @@ function HomePage() {
   const { user } = useSelector((state: stateType) => state.auth);
 
   return (
-    <section className="grid grid-cols-[100px_1fr_300px] gap-x-4 p-3">
+    <section className="homepageGrid gap-x-4 p-3">
       <User />
 
       <div>

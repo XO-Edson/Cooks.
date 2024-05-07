@@ -82,7 +82,6 @@ function Posts({ userId, isProfile }: Props) {
               userPicturePath={userPicturePath}
               likes={likes}
               comment={comment}
-              userId={userId}
             />
           )
         )

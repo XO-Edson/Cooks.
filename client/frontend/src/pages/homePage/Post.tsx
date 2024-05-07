@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { InitialState, PostType, setPost } from "../../ReduxContext/context";
+import { InitialState, setPost } from "../../ReduxContext/context";
 import Friend from "../../components/Friend";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +13,6 @@ type stateType = {
 type PropType = {
   postId: string;
   postUserId: string;
-  userId: string;
   name: string;
   description: string;
   location: string;
@@ -26,7 +25,6 @@ type PropType = {
 function Post({
   postId,
   postUserId,
-  userId,
   name,
   description,
   location,

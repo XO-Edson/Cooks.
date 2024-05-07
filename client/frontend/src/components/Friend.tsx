@@ -41,9 +41,11 @@ function Friend({ friendId, name, subTitle, userPicturePath }: Props) {
     dispatch(setFriend(data));
   };
 
+  console.log(userPicturePath);
+
   return (
     <>
-      <div className="mb-3 flex items-center">
+      <div className="mb-3 flex items-center mr-5">
         <div
           onClick={() => {
             navigate(`/profile/${friendId}`);
@@ -51,11 +53,11 @@ function Friend({ friendId, name, subTitle, userPicturePath }: Props) {
           }}
           className="flex"
         >
-          <div className=" w-full">
+          <div className=" w-full mr-2">
             <img
-              src={userImg}
+              src={`http://localhost:3001/assets/${userPicturePath}`}
               alt="user"
-              className=" object-cover h-[60px] w-[60px] rounded-full mr-5"
+              className="object-cover h-[60px] w-[60px] rounded-full mr-5"
             />
           </div>
         </div>
