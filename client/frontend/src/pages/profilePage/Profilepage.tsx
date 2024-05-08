@@ -7,6 +7,7 @@ import CreatePosts from "../homePage/CreatePost";
 import Posts from "../homePage/Posts";
 import linkedInImg from "../../assets/linkedin.png";
 import twitterImg from "../../assets/twitter.png";
+import noProfile from "../../assets/no-profile-picture-icon-13.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -68,7 +69,11 @@ function Profilepage() {
               onClick={() => navigate(`/profile/${profile?._id} `)}
             >
               <img
-                src={`http://localhost:3001/assets/${profile.picturePath}`}
+                src={
+                  !profile?.picturePath
+                    ? noProfile
+                    : `http://localhost:3001/assets/${profile.picturePath}`
+                }
                 alt="userImg"
                 className=" object-cover h-[70px] w-[70px] rounded-full mr-4"
               />

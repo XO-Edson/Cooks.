@@ -3,6 +3,7 @@ import { InitialState, setFriend } from "../ReduxContext/context";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus, faUserMinus } from "@fortawesome/free-solid-svg-icons";
+import noProfile from "../assets/no-profile-picture-icon-13.png";
 
 type Props = {
   friendId: any;
@@ -20,7 +21,6 @@ function Friend({ friendId, name, subTitle, userPicturePath }: Props) {
   const navigate = useNavigate();
   const { token, user } = useSelector((state: stateType) => state.auth);
 
-  console.log(user);
   const isFriend = user?.friends.map((friend) => friend._id).includes(friendId);
 
   const patchFriend = async () => {
@@ -53,7 +53,11 @@ function Friend({ friendId, name, subTitle, userPicturePath }: Props) {
         >
           <div className=" w-full mr-2">
             <img
-              src={`http://localhost:3001/assets/${userPicturePath}`}
+              src={
+                !userPicturePath
+                  ? noProfile
+                  : `http://localhost:3001/assets/${userPicturePath}`
+              }
               alt="user"
               className="object-cover h-[60px] w-[60px] rounded-full mr-5"
             />

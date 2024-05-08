@@ -13,9 +13,6 @@ type Props = {
 };
 
 function Posts({ userId, isProfile }: Props) {
-  console.log(isProfile);
-  console.log(userId);
-
   const dispatch = useDispatch();
   const { token, posts } = useSelector((state: stateType) => state.auth);
 

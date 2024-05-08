@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { InitialState, UserType } from "../../ReduxContext/context";
 import twitterImg from "../../assets/twitter.png";
 import linkedInImg from "../../assets/linkedin.png";
-import userImg from "../../assets/p3.jpeg";
+import noProfile from "../../assets/no-profile-picture-icon-13.png";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -51,7 +51,11 @@ function User() {
           onClick={() => navigate(`/profile/${userProfile?._id} `)}
         >
           <img
-            src={userImg}
+            src={
+              !user?.picturePath
+                ? noProfile
+                : `http://localhost:3001/assets/${user.picturePath}`
+            }
             alt="userImg"
             className=" object-cover h-[70px] w-[70px] rounded-full mr-4"
           />

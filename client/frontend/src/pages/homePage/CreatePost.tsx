@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { InitialState, setPosts } from "../../ReduxContext/context";
-import userImg from "../../assets/p3.jpeg";
+import noProfile from "../../assets/no-profile-picture-icon-13.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImage } from "@fortawesome/free-regular-svg-icons";
 import { faPaperclip, faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -50,7 +50,11 @@ function CreatePosts() {
       <div className="flex mb-3 items-center">
         <div>
           <img
-            src={userImg}
+            src={
+              !user?.picturePath
+                ? noProfile
+                : `http://localhost:3001/assets/${user.picturePath}`
+            }
             alt="userImg"
             className="object-cover h-[60px] w-[60px] rounded-full mr-10"
           />
