@@ -54,7 +54,6 @@ export const authSlice = createSlice({
     setLogin: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
-      console.log(state.user, state.token);
     },
 
     setLogout: (state) => {
@@ -75,8 +74,6 @@ export const authSlice = createSlice({
     },
 
     setPost: (state, action) => {
-      console.log(state);
-
       const updatedPosts = state.posts.map((post) => {
         if (post._id === action.payload._id) return action.payload;
         return post;

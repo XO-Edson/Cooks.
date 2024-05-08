@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { InitialState, setFriend } from "../ReduxContext/context";
 import { useNavigate } from "react-router-dom";
-import userImg from "../assets/p3.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus, faUserMinus } from "@fortawesome/free-solid-svg-icons";
 
@@ -21,6 +20,7 @@ function Friend({ friendId, name, subTitle, userPicturePath }: Props) {
   const navigate = useNavigate();
   const { token, user } = useSelector((state: stateType) => state.auth);
 
+  console.log(user);
   const isFriend = user?.friends.map((friend) => friend._id).includes(friendId);
 
   const patchFriend = async () => {
@@ -40,8 +40,6 @@ function Friend({ friendId, name, subTitle, userPicturePath }: Props) {
 
     dispatch(setFriend(data));
   };
-
-  console.log(userPicturePath);
 
   return (
     <>

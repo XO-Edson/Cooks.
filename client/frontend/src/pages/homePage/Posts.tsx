@@ -9,10 +9,13 @@ type stateType = {
 
 type Props = {
   userId: string;
-  isProfile: boolean | false;
+  isProfile: boolean;
 };
 
 function Posts({ userId, isProfile }: Props) {
+  console.log(isProfile);
+  console.log(userId);
+
   const dispatch = useDispatch();
   const { token, posts } = useSelector((state: stateType) => state.auth);
 
@@ -28,19 +31,17 @@ function Posts({ userId, isProfile }: Props) {
     }
 
     const data = await response.json();
-    console.log(data);
 
     dispatch(setPosts({ posts: data }));
   };
 
   const getUserPosts = async () => {
-    const response = await fetch(
-      `http://localhost:3001/posts/${userId}/posts`,
-      {
-        method: "GET",
-        headers: { authorization: `Bearer ${token}` },
-      }
-    );
+    console.log("running...");
+
+    const response = await fetch(`http://localhost:3001/posts/${userId}`, {
+      method: "GET",
+      headers: { authorization: `Bearer ${token}` },
+    });
 
     const data = await response.json();
 

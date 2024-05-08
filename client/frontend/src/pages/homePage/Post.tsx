@@ -91,7 +91,7 @@ function Post({
           <p onClick={() => setIsComment(!isComment)} className=" mr-1">
             <FontAwesomeIcon
               icon={faMessage}
-              className={isliked ? "text-orange-600" : ""}
+              className={isComment ? "text-orange-600" : ""}
             />
           </p>
           <p>{comment.length}</p>

@@ -43,7 +43,7 @@ function User() {
   }, [user?.friends]);
 
   return (
-    <section className="bg-slate-900 p-2 rounded-md h-fit">
+    <section className="bg-slate-900 p-2 rounded-md h-fit mb-2">
       {/* First-Row */}
       <div className="flex justify-between mb-2 items-center">
         <div
