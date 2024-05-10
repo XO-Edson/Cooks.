@@ -46,6 +46,9 @@ const userSchema = new Schema(
     impressions: {
       type: Number,
     },
+    refreshToken: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

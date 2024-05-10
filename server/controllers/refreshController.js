@@ -1,4 +1,4 @@
-import User from "./server/Models/user.js";
+import User from "../Models/user.js";
 import jwt from "jsonwebtoken";
 
 const handleRefresh = async (req, res) => {
@@ -8,6 +8,7 @@ const handleRefresh = async (req, res) => {
   const refreshToken = cookies.jwt;
 
   const foundUser = await User.findOne({ refreshToken }).exec();
+  console.log(foundUser);
 
   if (!foundUser) return res.sendStatus(403);
 
@@ -28,4 +29,4 @@ const handleRefresh = async (req, res) => {
   });
 };
 
-export default { handleRefresh };
+export { handleRefresh };

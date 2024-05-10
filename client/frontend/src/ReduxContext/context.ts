@@ -12,6 +12,7 @@ export type UserType = {
   picturePath: string;
   viewedProfile: number;
   impressions: number;
+  refreshToken: string;
 };
 
 export type PostType = {

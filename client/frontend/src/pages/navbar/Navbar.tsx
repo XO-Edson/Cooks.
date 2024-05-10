@@ -18,7 +18,8 @@ function Navbar() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
-  const LogOut = () => {
+  const LogOut = async () => {
+    await fetch("http://localhost:3001/logout");
     dispatch(setLogout());
     setToggleMenu((prev) => !prev);
     navigate("/");

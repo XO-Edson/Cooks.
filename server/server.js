@@ -15,7 +15,9 @@ import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postsRoutes from "./routes/posts.js";
 import verifyToken from "./middleware/auth.js";
-//import refreshRoute from "../refresh.js";
+import refreshRoute from "./routes/refresh.js";
+import cookieParser from "cookie-parser";
+import logoutRoute from "./routes/logout.js";
 import User from "./Models/user.js";
 import Post from "./Models/post.js";
 import { users, posts } from "./data/index.js";
@@ -38,6 +40,8 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 connectDB();
 
+app.use(cookieParser());
+
 /* FILE-STORAGE */
 const storage = multer.diskStorage({
   destination: function (req, res, cb) {
@@ -56,7 +60,8 @@ app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* ROUTES */
 app.use("/auth", authRoutes);
-//app.use("refresh", refreshRoute);
+app.use("/refresh", refreshRoute);
+app.use("/logout", logoutRoute);
 app.use("/users", userRoutes);
 app.use("/posts", postsRoutes);
 

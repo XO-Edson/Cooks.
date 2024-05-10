@@ -56,11 +56,15 @@ const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
 
     const token = jwt.sign({ _id: user.id }, process.env.ACCESS_TOKEN, {
-      expiresIn: "20m",
+      expiresIn: "1d",
     });
     const refreshToken = jwt.sign({ _id: user.id }, process.env.REFRESH_TOKEN, {
       expiresIn: "1d",
     });
+
+    user.refreshToken = refreshToken;
+    const result = await user.save();
+    console.log(result);
 
     res.cookie("jwt", refreshToken, {
       httpOnly: true,
