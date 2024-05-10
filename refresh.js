@@ -1,8 +1,7 @@
 import express from "express";
-import { login } from "../controllers/auth.js";
-
+import { handleRefresh } from "./refreshController";
 const router = express.Router();
 
-router.post("/login", login);
+router.get("/", handleRefresh);
 
 export default router;
