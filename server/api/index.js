@@ -29,6 +29,8 @@ dotenv.config();
 
 const app = express();
 
+connectDB();
+
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
@@ -37,8 +39,6 @@ app.use(bodyParser.json({ limit: "15mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
-
-connectDB();
 
 app.use(cookieParser());
 
@@ -59,7 +59,6 @@ app.post("/auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* ROUTES */
-app.use("/", (req, res) => res.status(200).json({ message: "Working..." }));
 app.use("/auth", authRoutes);
 app.use("/refresh", refreshRoute);
 app.use("/logout", logoutRoute);
