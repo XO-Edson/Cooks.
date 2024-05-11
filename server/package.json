@@ -2,11 +2,10 @@
   "name": "mediasocial",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./api/server.js",
-    "vercel-build": "echo hello"
+    "dev": "nodemon ./api/index.js"
   },
   "keywords": [],
   "author": "",
