@@ -28,6 +28,7 @@ export type PostType = {
   comment: string[];
   userPicturePath: string;
   picturePath: string;
+  createdAt: Date;
 };
 
 export type InitialState = {

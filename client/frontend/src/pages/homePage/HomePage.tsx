@@ -21,7 +21,7 @@ function HomePage() {
         <Posts userId={user?._id} isProfile={false} />
       </div>
 
-      <div>
+      <div className="hidden md:block">
         <Advert />
         <FriendList userId={user?._id} />
       </div>

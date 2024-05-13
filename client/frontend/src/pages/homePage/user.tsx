@@ -96,14 +96,14 @@ function User() {
         </div>
       </div>
 
-      <div className=" mb-2 flex justify-between">
-        <div>
+      <div className=" mb-2">
+        <div className=" flex justify-between">
           <p>Who's viewed your profile :</p>
-          <p>Impressions on your profile :</p>
+          <p> {userProfile?.viewedProfile}</p>
         </div>
 
-        <div>
-          <p> {userProfile?.viewedProfile}</p>
+        <div className=" flex justify-between">
+          <p>Impressions on your profile :</p>
           <p> {userProfile?.impressions}</p>
         </div>
       </div>
@@ -116,7 +116,7 @@ function User() {
         <div className="flex justify-between items-center">
           <img src={twitterImg} alt="TwitterIcon" className=" object-cover" />
           <div>
-            <h3>Twitter</h3>
+            <h3 className=" font-bold">Twitter</h3>
             <p>Social network</p>
           </div>
           <FontAwesomeIcon icon={faPen} />
@@ -124,7 +124,7 @@ function User() {
         <div className="flex justify-between items-center">
           <img src={linkedInImg} alt="TwitterIcon" className=" object-cover" />
           <div>
-            <h3>Twitter</h3>
+            <h3 className=" font-bold">LinkedIn</h3>
             <p>Social network</p>
           </div>
           <FontAwesomeIcon icon={faPen} />

@@ -38,8 +38,6 @@ function CreatePosts() {
 
     const posts = await response.json();
 
-    console.log(posts);
-
     dispatch(setPosts({ posts }));
     setImage(null);
     setPost("");

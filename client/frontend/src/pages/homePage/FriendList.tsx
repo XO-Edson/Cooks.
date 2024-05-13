@@ -32,7 +32,7 @@ function FriendList({ userId }: any) {
   }, []);
 
   return (
-    <section className="bg-slate-900 p-2 rounded-md h-fit">
+    <section className="bg-slate-900 p-2 rounded-md h-fit ">
       <h2>Friend List</h2>
       <hr className=" border-slate-700 my-2" />
       <div>

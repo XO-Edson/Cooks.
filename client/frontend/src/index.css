@@ -38,14 +38,14 @@ body {
   .homepageGrid {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    max-width: 1000px;
+    max-width: 1150px;
     margin: auto;
   }
 
   .profileGrid {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    max-width: 1000px;
+    max-width: 1150px;
     margin: auto;
   }
 }
