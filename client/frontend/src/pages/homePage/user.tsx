@@ -24,12 +24,15 @@ function User() {
   const [userProfile, setUserProfile] = useState<UserType>();
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3001/users/${user?._id}`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      `https://cooks-server.vercel.app/users/${user?._id}`,
+      {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (response.ok) {
       const data = await response.json();
@@ -54,7 +57,7 @@ function User() {
             src={
               !user?.picturePath
                 ? noProfile
-                : `http://localhost:3001/assets/${user.picturePath}`
+                : `https://cooks-server.vercel.app/assets/${user.picturePath}`
             }
             alt="userImg"
             className=" object-cover h-[70px] w-[70px] rounded-full mr-4"

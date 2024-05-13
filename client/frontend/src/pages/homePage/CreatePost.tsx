@@ -28,7 +28,7 @@ function CreatePosts() {
       formData.append("picturePath", image.name);
     } */
 
-    const response = await fetch("http://localhost:3001/posts", {
+    const response = await fetch("https://cooks-server.vercel.app/post", {
       method: "POST",
       headers: {
         authorization: `Bearer ${token}`,
@@ -53,7 +53,7 @@ function CreatePosts() {
             src={
               !user?.picturePath
                 ? noProfile
-                : `http://localhost:3001/assets/${user.picturePath}`
+                : `https://cooks-server.vercel.app/assets/${user.picturePath}`
             }
             alt="userImg"
             className="object-cover h-[60px] w-[60px] rounded-full mr-10"
@@ -80,7 +80,7 @@ function CreatePosts() {
               <div {...getRootProps()}>
                 <input {...getInputProps()} />
                 {!image ? (
-                  <p>Drag 'n' drop file here, or click to select files</p>
+                  <p>(Feature under maintainance...)</p>
                 ) : (
                   <p>{image.name}</p>
                 )}

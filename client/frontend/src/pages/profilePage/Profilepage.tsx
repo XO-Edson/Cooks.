@@ -29,12 +29,15 @@ function Profilepage() {
 
   const getUser = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/users/${userId}`, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `https://cooks-server.vercel.app/users/${userId}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       if (!response.ok) {
         console.error(`Error fetching user: ${response.statusText}`);
@@ -42,15 +45,12 @@ function Profilepage() {
       }
 
       const data = await response.json();
-      console.log(data);
 
       setProfile(data);
     } catch (error) {
       console.error(error);
     }
   };
-
-  console.log(profile);
 
   useEffect(() => {
     getUser();
@@ -72,7 +72,7 @@ function Profilepage() {
                 src={
                   !profile?.picturePath
                     ? noProfile
-                    : `http://localhost:3001/assets/${profile.picturePath}`
+                    : `https://cooks-server.vercel.app/assets/${profile.picturePath}`
                 }
                 alt="userImg"
                 className=" object-cover h-[70px] w-[70px] rounded-full mr-4"

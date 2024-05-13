@@ -17,7 +17,7 @@ function Posts({ userId, isProfile }: Props) {
   const { token, posts } = useSelector((state: stateType) => state.auth);
 
   const getFeedPosts = async () => {
-    const response = await fetch("http://localhost:3001/posts", {
+    const response = await fetch("https://cooks-server.vercel.app/posts", {
       method: "GET",
       headers: { authorization: `Bearer ${token}` },
     });
@@ -33,12 +33,13 @@ function Posts({ userId, isProfile }: Props) {
   };
 
   const getUserPosts = async () => {
-    console.log("running...");
-
-    const response = await fetch(`http://localhost:3001/posts/${userId}`, {
-      method: "GET",
-      headers: { authorization: `Bearer ${token}` },
-    });
+    const response = await fetch(
+      `https://cooks-server.vercel.app/posts/${userId}`,
+      {
+        method: "GET",
+        headers: { authorization: `Bearer ${token}` },
+      }
+    );
 
     const data = await response.json();
 

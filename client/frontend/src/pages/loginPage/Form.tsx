@@ -82,13 +82,16 @@ const Form = () => {
     console.log(values);
 
     try {
-      const response = await fetch("http://localhost:3001/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+      const response = await fetch(
+        "https://cooks-server.vercel.app/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
 
       if (response.ok) {
         onSubmitProps.resetForm();
@@ -241,9 +244,7 @@ const Form = () => {
                       <section className="input col-span-2 h-20">
                         <div {...getRootProps()}>
                           <input {...getInputProps()} />
-                          <p>
-                            Drag 'n' drop file here, or click to select files
-                          </p>
+                          <p>(Feature under maintainance)</p>
                         </div>
                       </section>
                     )}

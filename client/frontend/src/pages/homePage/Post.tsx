@@ -40,14 +40,17 @@ function Post({
   const likeCount = Object.keys(likes).length;
 
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
-      method: "PATCH",
-      headers: {
-        authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ userId: user?._id }),
-    });
+    const response = await fetch(
+      `https://cooks-server.vercel.app/posts/${postId}/like`,
+      {
+        method: "PATCH",
+        headers: {
+          authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: user?._id }),
+      }
+    );
 
     const updatedPost = await response.json();
 
@@ -67,7 +70,7 @@ function Post({
         <p className=" pb-2"> {description}</p>
         {picturePath && (
           <img
-            src={`http://localhost:3001/assets/${picturePath}`}
+            src={`https://cooks-server.vercel.app/assets/${picturePath}`}
             className=" object-cover rounded-md block"
           />
         )}

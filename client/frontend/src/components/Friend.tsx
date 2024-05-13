@@ -25,7 +25,7 @@ function Friend({ friendId, name, subTitle, userPicturePath }: Props) {
 
   const patchFriend = async () => {
     const response = await fetch(
-      `http://localhost:3001/users/${user?._id}/${friendId}`,
+      `https://cooks-server.vercel.app/users/${user?._id}/${friendId}`,
       {
         method: "PATCH",
         headers: {
@@ -36,7 +36,6 @@ function Friend({ friendId, name, subTitle, userPicturePath }: Props) {
     );
 
     const data = await response.json();
-    console.log(data);
 
     dispatch(setFriend(data));
   };
@@ -56,7 +55,7 @@ function Friend({ friendId, name, subTitle, userPicturePath }: Props) {
               src={
                 !userPicturePath
                   ? noProfile
-                  : `http://localhost:3001/assets/${userPicturePath}`
+                  : `https://cooks-server.vercel.app/assets/${userPicturePath}`
               }
               alt="user"
               className="object-cover h-[60px] w-[60px] rounded-full mr-5"

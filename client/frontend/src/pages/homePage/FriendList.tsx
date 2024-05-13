@@ -13,7 +13,7 @@ function FriendList({ userId }: any) {
 
   const getFriends = async () => {
     const response = await fetch(
-      `http://localhost:3001/users/${userId}/friends`,
+      `https://cooks-server.vercel.app/users/${userId}/friends`,
       {
         method: "GET",
         headers: {
