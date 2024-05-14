@@ -19,7 +19,7 @@ function Navbar() {
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   const LogOut = async () => {
-    await fetch("http://localhost:3001/logout");
+    await fetch("https://cooks-client.vercel.app/logout");
     dispatch(setLogout());
     setToggleMenu((prev) => !prev);
     navigate("/");
