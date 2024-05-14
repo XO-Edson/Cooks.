@@ -278,7 +278,7 @@ const Form = () => {
                       <section className="input col-span-2 h-20">
                         <div {...getRootProps()}>
                           <input {...getInputProps()} />
-                          <p>(Feature under maintainance)</p>
+                          <p>(Image feature under maintainance)</p>
                         </div>
                       </section>
                     )}
@@ -353,6 +353,10 @@ const Form = () => {
                   <div className="w-full md:max-w-[50%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-2">
                     <h3 className=" font-bold col-span-2">
                       Welcome to <span className="text-orange-600">COOKs.</span>
+                      <br />
+                      <p className=" text-gray-600">
+                        The home of good food and all culinary experiences.
+                      </p>
                     </h3>
                     <input
                       type="text"

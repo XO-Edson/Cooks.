@@ -78,7 +78,7 @@ function CreatePosts() {
               <div {...getRootProps()}>
                 <input {...getInputProps()} />
                 {!image ? (
-                  <p>(Feature under maintainance...)</p>
+                  <p>(image feature under maintainance...)</p>
                 ) : (
                   <p>{image.name}</p>
                 )}
