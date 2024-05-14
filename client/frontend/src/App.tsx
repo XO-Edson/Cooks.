@@ -1,5 +1,3 @@
-//Add rubic font
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import HomePage from "./pages/homePage/HomePage";
 import LoginPage from "./pages/loginPage/LoginPage";

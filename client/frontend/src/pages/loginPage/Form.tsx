@@ -79,7 +79,6 @@ const Form = () => {
     }
  */
     //console.log(formData);
-    console.log(values);
 
     try {
       const response = await fetch(
@@ -121,6 +120,41 @@ const Form = () => {
       if (response.ok) {
         const loggedInUser = await response.json();
         onSubmitProps.resetForm();
+        dispatch(
+          setLogin({ user: loggedInUser.user, token: loggedInUser.token })
+        );
+
+        navigate("/home");
+      } else {
+        console.error("Failed to login:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
+  };
+
+  /* GUEST LOGIN  */
+  const loginAsGuest = async () => {
+    setPage("guest");
+
+    try {
+      const response = await fetch(
+        "https://cooks-server.vercel.app/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: "guest@guest.com",
+            password: "123guest2024",
+          }),
+        }
+      );
+
+      if (response.ok) {
+        const loggedInUser = await response.json();
+
         dispatch(
           setLogin({ user: loggedInUser.user, token: loggedInUser.token })
         );
@@ -192,7 +226,7 @@ const Form = () => {
                     value={values.firstName}
                   />
                   {touched.firstName && errors.firstName && (
-                    <div className="error">{errors.firstName}</div>
+                    <div className=" text-red-600">{errors.firstName}</div>
                   )}
 
                   {/* Last name input */}
@@ -206,7 +240,7 @@ const Form = () => {
                     value={values.lastName}
                   />
                   {touched.lastName && errors.lastName && (
-                    <div className="error">{errors.lastName}</div>
+                    <div className="text-red-600">{errors.lastName}</div>
                   )}
 
                   {/* Additional fields for registration */}
@@ -220,7 +254,7 @@ const Form = () => {
                     value={values.location}
                   />
                   {touched.location && errors.location && (
-                    <div className="error">{errors.location}</div>
+                    <div className="text-red-600">{errors.location}</div>
                   )}
 
                   <input
@@ -233,7 +267,7 @@ const Form = () => {
                     value={values.occupation}
                   />
                   {touched.occupation && errors.occupation && (
-                    <div className="error">{errors.occupation}</div>
+                    <div className="text-red-600">{errors.occupation}</div>
                   )}
 
                   <Dropzone
@@ -260,7 +294,7 @@ const Form = () => {
                     value={values.email}
                   />
                   {touched.email && errors.email && (
-                    <div className="error">{errors.email}</div>
+                    <div className="text-red-600">{errors.email}</div>
                   )}
 
                   <input
@@ -273,7 +307,7 @@ const Form = () => {
                     value={values.password}
                   />
                   {touched.password && errors.password && (
-                    <div className="error">{errors.password}</div>
+                    <div className="text-red-600">{errors.password}</div>
                   )}
 
                   <button
@@ -330,7 +364,7 @@ const Form = () => {
                       value={values.email}
                     />
                     {touched.email && errors.email && (
-                      <div className="error">{errors.email}</div>
+                      <div className="text-red-600">{errors.email}</div>
                     )}
 
                     <input
@@ -343,7 +377,7 @@ const Form = () => {
                       value={values.password}
                     />
                     {touched.password && errors.password && (
-                      <div className="error">{errors.password}</div>
+                      <div className="text-red-700">{errors.password}</div>
                     )}
 
                     <button
@@ -361,6 +395,13 @@ const Form = () => {
                     >
                       Dont have an account? Sign up here.
                     </p>
+                    <button
+                      type="submit"
+                      className="rounded-md bg-orange-700 p-1 hover:bg-orange-600"
+                      onClick={loginAsGuest}
+                    >
+                      LOGIN AS GUEST
+                    </button>
                   </div>
                 </form>
               )}
